@@ -13,7 +13,12 @@ For an example of additional HTTP filters, see [here](http-filter-example).
 To build the Envoy static binary:
 
 1. `git submodule update --init`
-2. `bazel build //:envoy`
+
+2.  To build Network filter  
+`bazel build  -c dbg --copt "-DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1"  //:envoy`
+
+3. To build http filter  
+`bazel build  -c dbg --copt "-DENVOY_IGNORE_GLIBCXX_USE_CXX11_ABI_ERROR=1"  //http-filter-example:envoy `
 
 ## Testing
 
