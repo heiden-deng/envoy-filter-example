@@ -14,6 +14,8 @@ To build the Envoy static binary:
 
 ## Testing
 
+put custom configuration in /User/heiden/custom_header.ini
+
 To run the `sample` integration test:
 
 `bazel test //http-filter-example:http_filter_integration_test`
