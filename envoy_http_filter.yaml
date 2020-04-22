@@ -21,10 +21,9 @@ static_resources:
                           route:
                             cluster: gmem
                 http_filters:
-                  - name: sample
+                  - name: cebfilter
                     config:
-                      key: via
-                      val: sample-filter
+                      filename: /User/heiden/head_custom.ini
                   - name: envoy.router
     clusters:
       - name: gmem
