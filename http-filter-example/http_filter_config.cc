@@ -16,6 +16,7 @@ public:
                                                      const std::string&,
                                                      FactoryContext& context) override {
 
+    printf("\n\nHttpSampleDecoderFilterConfig:createFilterFactoryFromProto called\n\n");
     return createFilter(Envoy::MessageUtil::downcastAndValidate<const sample::Decoder&>(
                             proto_config, context.messageValidationVisitor()),
                         context);
@@ -28,10 +29,11 @@ public:
     return ProtobufTypes::MessagePtr{new sample::Decoder()};
   }
 
-  std::string name() const override { return "sample"; }
+  std::string name() const override { return "cebfilter"; }
 
 private:
   Http::FilterFactoryCb createFilter(const sample::Decoder& proto_config, FactoryContext&) {
+    printf("\n\nHttpSampleDecoderFilterConfig:createFilter called\n\n")
     Http::HttpSampleDecoderFilterConfigSharedPtr config =
         std::make_shared<Http::HttpSampleDecoderFilterConfig>(
             Http::HttpSampleDecoderFilterConfig(proto_config));
